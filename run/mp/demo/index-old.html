@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+    <title></title>
+
+
+    <script type="text/javascript" src="demo/js/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="plugin/jquery-jplayer/jquery.jplayer.js"></script>
+
+	<script src="audioplayerengine/amazingaudioplayer.js"></script>
+	<link rel="stylesheet" type="text/css" href="audioplayerengine/initaudioplayer-1.css">
+	<script src="audioplayerengine/initaudioplayer-1.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+			$('.small').click(function(){
+				closeP();
+			});
+			$('.big').click(function(){
+				openP();
+			});
+			var myPlaylist = [];
+
+			window.addEventListener('message', function(event) {
+				
+              if(event.origin === 'http://localhost:8080')
+                {
+                     console.log('Received child message: ' + JSON.stringify(event.data));
+
+					/* create list for clone */
+					var tempPlayList = [];
+
+					/*copy old data */
+                    for(var i = 0 ; i < myPlaylist.length ; i++) {
+
+					tempPlayList.push(myPlaylist[i]);
+
+					}
+
+					/*copy new data */
+					for(var j = 0 ; j < event.data.length ; j ++) {
+
+					var newSound = event.data[j];
+
+					tempPlayList.push(newSound);
+
+					}
+
+					myPlaylist = tempPlayList;
+
+					/* clean body element */
+					   $('.pluginInstalledv2').empty();
+
+					/* run ttwMusicPlayer */
+					   $('.pluginInstalledv2').ttwMusicPlayer(myPlaylist, {
+						autoPlay:true,
+						description:"This is the description",
+						jPlayer:{
+							swfPath:'plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+						}
+					  });
+
+					console.log("done!")
+
+				}
+				else
+				{
+					  console.log('Origin not allowed!');
+				}
+			}, false);
+		
+
+
+			var init = function (){
+			
+			myPlaylist.push({
+				mp3:'/run/mp/demo/mix/1.mp3',
+				oga:'mix/1.ogg',
+				title:'אליעזר בן יהודה',
+				artist:'אליעזר בן יהודה',
+				rating:4,
+				buy:'#',
+				price:'0.99',
+				duration:'0:30',
+				cover:'/run/mp/demo/mix/1.png'
+			});	
+			
+			    $('.pluginInstalledv2').ttwMusicPlayer(myPlaylist, {
+                autoPlay:true,
+                description:"",
+                jPlayer:{
+                    swfPath:'plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+			
+			};
+			
+			/*run in the beginning on load */
+			init();
+
+        });
+
+
+		function closeP() {
+
+			window.parent.postMessage("Close", 'http://localhost:8080');
+
+		}
+
+		function openP() {
+
+			window.parent.postMessage("Open", 'http://localhost:8080');
+
+		}
+
+		
+    </script>
+</head>
+<body>
+
+<input class="small" type="button" value="Close" style="position: fixed;top: 10px;left: 10px;">
+<input class="big" type="button" value="Open" style="position: fixed;top: 10px;left: 80px;">
+
+
+<div style="margin:12px auto;">
+
+	<!-- Insert to your webpage where you want to display the audio player -->
+	<div id="amazingaudioplayer-1" style="display:block;position:relative;width:300px;height:auto;margin:0px auto 0px;">
+		<ul class="amazingaudioplayer-audios" style="display:none;">
+			<li data-artist="Royalty Free Music" data-title="Vocal House Bass Heavy Beat" data-album="Royalty Free Dance Music for DJ&apos;s Vol. 1" data-info="" data-image="" data-duration="375">
+				<div class="amazingaudioplayer-source" data-src="audios/01.mp3" data-type="audio/mpeg" />
+			</li>
+			<li data-artist="Royalty Free Music" data-title="Pop House" data-album="Royalty Free Dance Music for DJ&apos;s Vol. 1" data-info="" data-image="" data-duration="281">
+				<div class="amazingaudioplayer-source" data-src="audios/02.mp3" data-type="audio/mpeg" />
+			</li>
+			<li data-artist="Royalty Free Music" data-title="Progressive House Banger" data-album="Royalty Free Dance Music for DJ&apos;s Vol. 1" data-info="" data-image="" data-duration="229">
+				<div class="amazingaudioplayer-source" data-src="audios/03.mp3" data-type="audio/mpeg" />
+			</li>
+		</ul>
+		<div class="amazingaudioplayer-engine"><a href="http://amazingaudioplayer.com" title="jquery mp3 player">html5 mp3 player</a></div>
+	</div>
+	<!-- End of body section HTML codes -->
+
+</div>
+
+
+</body>
+</html>

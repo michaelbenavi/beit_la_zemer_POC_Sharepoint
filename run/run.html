@@ -1,0 +1,80 @@
+
+<html >
+   <head>
+   <style>
+       iframe {
+           overflow: scroll;
+           height: 100%;
+           border: 0px solid green;
+       }
+   </style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+    
+ 
+ 
+ 
+  <!--<h1>This is my application</h1>-->
+  
+  <iframe id="iframe1"  style="height:89%;width:100%;position:fixed;left:0px;top:0px" src="http://localhost:8080/run/app/"></iframe>
+  <iframe scrolling="yes" id="iframe2" style="height:11%;width:100%;position:fixed;left:0px;bottom:0px;" src="http://localhost:8080/run/mp/"></iframe>
+  
+  
+  
+   <script>
+   
+	window.addEventListener('message', function(event) {
+	
+      if(event.origin === 'http://localhost:8080')
+      {
+          var playerIFrame = document.getElementById("iframe2").contentWindow;
+          if(typeof event.data.album != "undefined") {
+
+
+              playerIFrame.postMessage(event.data.album, "http://localhost:8080");
+              return;
+          }
+
+          if (event.data.toLowerCase() == "add")
+          {
+              playerIFrame.postMessage("Add", "http://localhost:8080");
+          }
+
+		 if (event.data.toLowerCase() == "close")
+         {
+
+             var height = $(window).height();
+             $('#iframe2').animate({height: '11%'})
+             $('#iframe1').animate({height: '89%'})
+             playerIFrame.postMessage("Close", "http://localhost:8080");
+            // $('#iframe2').css('height', height * 0.1 | 0);
+            // $('#iframe1').css('height', height * 0.9 | 0);
+         }
+          if (event.data.toLowerCase() == "open")
+          {
+
+              var height = $(window).height();
+              $('#iframe2').animate({height: '20%'})
+              $('#iframe1').animate({height: '80%'})
+              playerIFrame.postMessage("Open", "http://localhost:8080");
+          }
+        console.log('Received parent message: ' + JSON.stringify(event.data.album));
+
+
+		 
+            
+      }
+      else
+      {
+        console.log('Origin not allowed!');
+      }
+
+    }, false);
+   
+   </script>
+  
+
+</body></html>
