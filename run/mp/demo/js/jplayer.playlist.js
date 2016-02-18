@@ -272,7 +272,10 @@
 			}
 
 			// The title is given next in the HTML otherwise the float:right on the free media corrupts in IE6/7
-			listItem += "<a href='javascript:;' class='" + this.options.playlistOptions.itemClass + "' tabindex='0'>" + media.title + (media.artist ? " <span class='jp-artist'>by " + media.artist + "</span>" : "") + "</a>";
+			//listItem += "<a href='javascript:;' class='" + this.options.playlistOptions.itemClass + "' tabindex='0'>" + media.title + (media.artist ? " <span class='jp-artist'>by " + media.artist + "</span>" : "") + "</a>";
+			listItem += "<div width='150' height='100' style='background-color:white;' src='"+ media.poster +"' class='img_" + this.options.playlistOptions.itemClass + "' tabindex='0'>";
+			listItem +=  "<a href='javascript:;' class='" + this.options.playlistOptions.itemClass + "' tabindex='0'>" + "<img width='120' height='80' src='"+ media.poster +"' class='img_" + this.options.playlistOptions.itemClass + "' tabindex='0'>"+"</img>" +  "</a>";
+			listItem += "</div>";
 			listItem += "</div></li>";
 
 			return listItem;

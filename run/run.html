@@ -19,8 +19,8 @@
  
   <!--<h1>This is my application</h1>-->
   
-  <iframe id="iframe1"  style="height:89%;width:100%;position:fixed;left:0px;top:0px" src="http://localhost:8080/run/app/"></iframe>
-  <iframe scrolling="yes" id="iframe2" style="height:11%;width:100%;position:fixed;left:0px;bottom:0px;" src="http://localhost:8080/run/mp/"></iframe>
+  <iframe id="iframe1"  style="height:93.5%;width:100%;position:fixed;left:0px;top:0px" src="http://localhost:8080/run/app/"></iframe>
+  <iframe scrolling="yes" id="iframe2" style="height:6.5%;width:100%;position:fixed;left:0px;bottom:0px;" src="http://localhost:8080/run/mp/"></iframe>
   
   
   
@@ -47,8 +47,8 @@
          {
 
              var height = $(window).height();
-             $('#iframe2').animate({height: '11%'})
-             $('#iframe1').animate({height: '89%'})
+             $('#iframe2').animate({height: '6.5%'})
+             $('#iframe1').animate({height: '93.5%'})
              playerIFrame.postMessage("Close", "http://localhost:8080");
             // $('#iframe2').css('height', height * 0.1 | 0);
             // $('#iframe1').css('height', height * 0.9 | 0);
@@ -57,8 +57,8 @@
           {
 
               var height = $(window).height();
-              $('#iframe2').animate({height: '20%'})
-              $('#iframe1').animate({height: '80%'})
+              $('#iframe2').animate({height: '18.5%'})
+              $('#iframe1').animate({height: '81.5%'})
               playerIFrame.postMessage("Open", "http://localhost:8080");
           }
         console.log('Received parent message: ' + JSON.stringify(event.data.album));

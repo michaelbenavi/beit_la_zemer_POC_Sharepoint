@@ -26,7 +26,20 @@
                 {
                     title:"Cro Magnon Man",
                     artist:"The Stark Palace",
-                    mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3"
+                    mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+                    poster: "demo/images/047.jpg"
+                },
+                {
+                    title:"Cro Magnon Man",
+                    artist:"The Stark Palace",
+                    mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+                    poster: "demo/images/047.jpg"
+                },
+                {
+                    title:"Cro Magnon Man",
+                    artist:"The Stark Palace",
+                    mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+                    poster: "demo/images/047.jpg"
                 }
             ], {
                 playlistOptions: {
@@ -607,6 +620,13 @@
 
     </script>
     <style>
+
+        .jp-playlist{
+            position: fixed;
+            bottom:0px;
+            background-color:#3D3D3C;
+
+        }
         #jquery_jplayer_N{
             display: none!important;
         }
@@ -636,17 +656,12 @@
 
     <div class="jp-type-playlist">
 
-        <div class="jp-playlist">
-            <ul>
-                <!-- The method Playlist.displayPlaylist() uses this unordered list -->
-                <li>&nbsp;</li>
-            </ul>
-        </div>
+
         <div id="jquery_jplayer_N" class="jp-jplayer"></div>
         <div class="jp-gui">
-            <div class="jp-video-play">
+            <!--<div class="jp-video-play">
                 <button class="jp-video-play-icon" role="button" tabindex="0">play</button>
-            </div>
+            </div>-->
             <div class="jp-interface">
                 <div class="jp-progress">
                     <div class="jp-seek-bar">
@@ -687,12 +702,17 @@
                         <button class="jp-full-screen" role="button" tabindex="0">full screen</button>-->
                     </div>
                 </div>
-                <div class="jp-details" style="display:block!important;">
+               <!-- <div class="jp-details" style="display:block!important;">
                     <div class="jp-title" aria-label="title">&nbsp;</div>
-                </div>
+                </div>-->
             </div>
         </div>
-
+        <div class="jp-playlist">
+            <ul>
+                <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                <li>&nbsp;</li>
+            </ul>
+        </div>
 
     </div>
 </div>

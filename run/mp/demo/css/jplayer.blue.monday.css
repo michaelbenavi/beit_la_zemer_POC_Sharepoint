@@ -81,10 +81,10 @@
   /* 1 layer above the others. */ }
 
 .jp-video-full .jp-interface {
-  position: absolute !important;
+  /*position: absolute !important;*/
   position: relative;
   /* Rules for IE6 (full-screen) */
-  bottom: 0;
+  bottom: 0px;
   left: 0; }
 
 .jp-interface {
@@ -375,7 +375,10 @@
 }
 
 .jp-playlist li div {
-  display: inline; }
+  display: inline;
+  background-color:white;
+  list-style-position: inside;
+}
 
 /* Note that the first-child (IE6) and last-child (IE6/7/8) selectors do not work on IE */
 div.jp-type-playlist div.jp-playlist li:last-child {
@@ -383,12 +386,13 @@ div.jp-type-playlist div.jp-playlist li:last-child {
   border-bottom: none; }
 
 div.jp-type-playlist div.jp-playlist li.jp-playlist-current {
-  background-color:#46b8da;
+
 
   font-size: 16px;
-  list-style-type: square;
+  /*list-style-type: none;
   list-style-position: inside;
-  padding-left: 15px; }
+ /* padding-left: 15px;*/
+}
 
 
 
